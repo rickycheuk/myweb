@@ -1,7 +1,7 @@
 import React from "react"
 import Image from 'next/image'
 
-import Card from './Card2';
+import Card from './card2';
 
 function Home() { 
     return (
