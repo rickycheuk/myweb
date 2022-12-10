@@ -10,7 +10,9 @@ export default function RootLayout({
   return (
     <html>
       <head />
-      <body className="bg-black"> 
+      <body> 
+        <div className="stars"></div>
+        <div className="twinkling"></div>
         <Header />
         {children}
       </body> 
