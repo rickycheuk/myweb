@@ -1,6 +1,6 @@
 import React from "react"
 
-import Card from './card2';
+import Card from './card';
 
 function Home() { 
     return (
