@@ -16,9 +16,9 @@ const Card = () => {
 
   return (
     // card wrapper
-    <div className='object-scale-down'>
+    <div className='flex flex-col w-full justify-center h-[90vh] items-center overflow-hidden'>
         {/* card */}
-        <Tilt options={{ glare: true , "max-glare":0.42, perspective: 420}}  className="rounded-[22px] object-scale-down">
+        <Tilt options={{ glare: true , "max-glare":0.42, perspective: 420}}  className="rounded-[22px]">
             <div className="abolute min-w-[70px] min-h-[115px] max-w-[275px] max-h-[460px] bg-zinc-900/[.95] rounded-[22px] border-[2px] border-zinc-700 px-[22px] py-[22px] cursor-grab" >
                 {/* card image */} 
                 <img className="w-full rounded-xl overflow-hidden mb-3 opacity-95" src="./ricky.jpg" alt='' draggable='false' />
