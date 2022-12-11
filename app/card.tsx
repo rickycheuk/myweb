@@ -21,6 +21,7 @@ const Card = () => {
     setScale(1);
   };
 
+  const animationCard = useAnimation();
   const animationPic = useAnimation();
   const animationTitle = useAnimation();
   const animationSub = useAnimation();
@@ -29,11 +30,11 @@ const Card = () => {
   const animationDuration = 0.2;
 
   async function sequence() {
-    await animationPic.start({
-      scale: 0,
+    await animationCard.start({
+      y: 0,
       transition: {
         type: "spring",
-        duration: animationDuration,
+        duration: 2,
       },
     });
     await flipCard();
@@ -87,9 +88,13 @@ const Card = () => {
 
   const cardFaces = {
     front: (
-      <div className=" overflow-hidden">
+      <div className="overflow-hidden">
         {/* card image */}
-        <motion.div animate={animationPic} initial={{ scale: initScale }}>
+        <motion.div
+          animate={animationPic}
+          initial={{ scale: initScale }}
+          className="overflow-hidden"
+        >
           <img
             className="w-full rounded-xl overflow-hidden mb-3 opacity-95"
             src="/ricky.jpg"
@@ -162,31 +167,37 @@ const Card = () => {
     // card wrapper
     <div className="flex flex-col w-screen justify-center h-screen items-center overflow-hidden">
       {/* card */}
-      <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-        <div>
-          <Tilt
-            options={{ glare: true, "max-glare": 0.42, perspective: 420 }}
-            className="rounded-[22px]"
-            onClick={flipCard}
-          >
-            <div className="abolute w-[290px] h-[460px] bg-zinc-900/[.95] rounded-[22px] border-[2px] border-zinc-700 px-[22px] py-[22px] cursor-grab">
-              {cardFaces.front}
-            </div>
-          </Tilt>
-        </div>
+      <motion.div
+        animate={animationCard}
+        initial={{ scale: 1, y: -1000 }}
+        className="overflow-hidden"
+      >
+        <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+          <div>
+            <Tilt
+              options={{ glare: true, "max-glare": 0.42, perspective: 420 }}
+              className="rounded-[22px]"
+              onClick={flipCard}
+            >
+              <div className="abolute w-[290px] h-[460px] bg-zinc-900/[.95] rounded-[22px] border-[2px] border-zinc-700 px-[22px] py-[22px] cursor-grab">
+                {cardFaces.front}
+              </div>
+            </Tilt>
+          </div>
 
-        <div>
-          <Tilt
-            options={{ glare: true, "max-glare": 0.42, perspective: 420 }}
-            className="rounded-[22px]"
-            onClick={flipCard}
-          >
-            <div className="abolute w-[290px] h-[460px] bg-zinc-900/[.95] rounded-[22px] border-[2px] border-zinc-700 cursor-grab">
-              {cardFaces.back}
-            </div>
-          </Tilt>
-        </div>
-      </ReactCardFlip>
+          <div>
+            <Tilt
+              options={{ glare: true, "max-glare": 0.42, perspective: 420 }}
+              className="rounded-[22px]"
+              onClick={flipCard}
+            >
+              <div className="abolute w-[290px] h-[460px] bg-zinc-900/[.95] rounded-[22px] border-[2px] border-zinc-700 cursor-grab">
+                {cardFaces.back}
+              </div>
+            </Tilt>
+          </div>
+        </ReactCardFlip>
+      </motion.div>
     </div>
   );
 };
