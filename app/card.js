@@ -175,11 +175,11 @@ const Card = () => {
   const validateCode = async (event) => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
-    if(event.target.code.value == "0524"){
-      alert("BRRRAVO!!! You have exceeded my expectations :)")
-    } else if (event.target.code.value == ""){
+    if (event.target.code.value == "0524") {
+      alert("BRRRAVO!!! You have exceeded my expectations :)");
+    } else if (event.target.code.value == "") {
       alert("Input is empty");
-    } else{
+    } else {
       alert(`${event.target.code.value} is not the right code`);
     }
   };
