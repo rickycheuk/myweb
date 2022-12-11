@@ -88,7 +88,7 @@ const Card = () => {
 
   const cardFaces = {
     front: (
-      <div className="overflow-hidden">
+      <div className="h-full w-full overflow-hidden">
         {/* card image */}
         <motion.div
           animate={animationPic}
@@ -170,7 +170,7 @@ const Card = () => {
       <motion.div
         animate={animationCard}
         initial={{ scale: 1, y: -1000 }}
-        className="overflow-hidden"
+        className="h-full	w-full overflow-hidden"
       >
         <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
           <div>
