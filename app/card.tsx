@@ -171,13 +171,13 @@ const Card = () => {
         animate={animationCard}
         initial={{ scale: 1, y: -1000 }}
         className="flex flex-col w-screen justify-center h-screen items-center overflow-hidden"
+        onClick={flipCard}
       >
         <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
           <div>
             <Tilt
-              options={{ glare: true, "max-glare": 0.42, perspective: 420 }}
+              options={{ glare: true, "max-glare": 0.42, perspective: 690 }}
               className="rounded-[22px]"
-              onClick={flipCard}
             >
               <div className="abolute w-[290px] h-[460px] bg-zinc-900/[.95] rounded-[22px] border-[2px] border-zinc-700 px-[22px] py-[22px] cursor-grab">
                 {cardFaces.front}
@@ -187,9 +187,8 @@ const Card = () => {
 
           <div>
             <Tilt
-              options={{ glare: true, "max-glare": 0.42, perspective: 420 }}
+              options={{ glare: true, "max-glare": 0.42, perspective: 690 }}
               className="rounded-[22px]"
-              onClick={flipCard}
             >
               <div className="abolute w-[290px] h-[460px] bg-zinc-900/[.95] rounded-[22px] border-[2px] border-zinc-700 cursor-grab">
                 {cardFaces.back}
