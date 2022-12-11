@@ -21,7 +21,6 @@ const Card = () => {
     setScale(1);
   };
 
-  const animationCard = useAnimation();
   const animationPic = useAnimation();
   const animationTitle = useAnimation();
   const animationSub = useAnimation();
