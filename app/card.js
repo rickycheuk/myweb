@@ -15,11 +15,11 @@ const Card = () => {
     { value: "#003B80" },
   ];
 
-  const [initScale, setScale] = useState(0);
+  const [initScale, setScale] = useState(1);
   const [isFlipped, setFlip] = useState(true);
   const flipCard = () => {
     setFlip(!isFlipped);
-    setScale(1);
+    // setScale(1);
   };
 
   const animationCard = useAnimation();
@@ -36,50 +36,57 @@ const Card = () => {
       y: 0,
       transition: {
         type: "spring",
-        duration: 2,
+        duration: 1.69,
       },
     });
     await flipCard();
-    await animationPic.start({
+    // await animationPic.start({
+    //   scale: 0,
+    //   transition: {
+    //     type: "spring",
+    //     duration: 1,
+    //   },
+    // });
+    // await animationPic.start({
+    //   scale: 1,
+    //   transition: {
+    //     type: "spring",
+    //     duration: animationDuration,
+    //   },
+    // });
+    // await animationTitle.start({
+    //   scale: 1,
+    //   transition: {
+    //     type: "spring",
+    //     duration: animationDuration,
+    //   },
+    // });
+    // await animationSub.start({
+    //   scale: 1,
+    //   transition: {
+    //     type: "spring",
+    //     duration: animationDuration,
+    //   },
+    // });
+    // await animationLink.start({
+    //   scale: 1,
+    //   transition: {
+    //     type: "spring",
+    //     duration: animationDuration,
+    //   },
+    // });
+    // await animationColor.start({
+    //   scale: 1,
+    //   transition: {
+    //     type: "spring",
+    //     duration: animationDuration,
+    //   },
+    // });
+    await animationForm.start({
       scale: 0,
       transition: {
         type: "spring",
-        duration: 1,
-      },
-    });
-    await animationPic.start({
-      scale: 1,
-      transition: {
-        type: "spring",
-        duration: animationDuration,
-      },
-    });
-    await animationTitle.start({
-      scale: 1,
-      transition: {
-        type: "spring",
-        duration: animationDuration,
-      },
-    });
-    await animationSub.start({
-      scale: 1,
-      transition: {
-        type: "spring",
-        duration: animationDuration,
-      },
-    });
-    await animationLink.start({
-      scale: 1,
-      transition: {
-        type: "spring",
-        duration: animationDuration,
-      },
-    });
-    await animationColor.start({
-      scale: 1,
-      transition: {
-        type: "spring",
-        duration: animationDuration,
+        duration: 0.69,
       },
     });
     await animationForm.start({
