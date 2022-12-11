@@ -5,6 +5,7 @@ import Tilt from "./tilt";
 import * as Icon from "react-feather";
 import { motion, useAnimation } from "framer-motion";
 import ReactCardFlip from "react-card-flip";
+import * as rdd from "react-device-detect";
 
 const Card = () => {
   const colors = [
@@ -174,9 +175,13 @@ const Card = () => {
   const validateCode = async (event) => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
-    event.target.code.value == "0524"
-      ? alert("BRRRAVO!!! You have exceeded my expectations :)")
-      : alert(`${event.target.code.value} is not the right code`);
+    if(event.target.code.value == "0524"){
+      alert("BRRRAVO!!! You have exceeded my expectations :)")
+    } else if (event.target.code.value == ""){
+      alert("Input is empty");
+    } else{
+      alert(`${event.target.code.value} is not the right code`);
+    }
   };
 
   return (
@@ -188,30 +193,45 @@ const Card = () => {
         initial={{ scale: 1, y: -1000 }}
         className="flex flex-col w-screen justify-center h-screen items-center overflow-hidden"
       >
-        <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-          <div onClick={flipCard}>
-            <Tilt
-              options={{ glare: true, "max-glare": 0.42, perspective: 690 }}
-              className="rounded-[22px]"
-            >
+        {rdd.isIOS ? (
+          <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+            <div onClick={flipCard}>
               <div className="abolute w-[290px] h-[460px] bg-zinc-900/[.95] rounded-[22px] border-[2px] border-zinc-700 px-[22px] py-[22px] cursor-grab">
                 {cardFaces.front}
               </div>
-            </Tilt>
-          </div>
+            </div>
 
-          <div onClick={flipCard}>
-            <Tilt
-              options={{ glare: true, "max-glare": 0.42, perspective: 690 }}
-              className="rounded-[22px]"
-            >
+            <div onClick={flipCard}>
               <div className="abolute w-[290px] h-[460px] bg-zinc-900/[.95] rounded-[22px] border-[2px] border-zinc-700 cursor-grab">
                 {cardFaces.back}
               </div>
-            </Tilt>
-          </div>
-        </ReactCardFlip>
+            </div>
+          </ReactCardFlip>
+        ) : (
+          <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+            <div onClick={flipCard}>
+              <Tilt
+                options={{ glare: true, "max-glare": 0.42, perspective: 690 }}
+                className="rounded-[22px]"
+              >
+                <div className="abolute w-[290px] h-[460px] bg-zinc-900/[.95] rounded-[22px] border-[2px] border-zinc-700 px-[22px] py-[22px] cursor-grab">
+                  {cardFaces.front}
+                </div>
+              </Tilt>
+            </div>
 
+            <div onClick={flipCard}>
+              <Tilt
+                options={{ glare: true, "max-glare": 0.42, perspective: 690 }}
+                className="rounded-[22px]"
+              >
+                <div className="abolute w-[290px] h-[460px] bg-zinc-900/[.95] rounded-[22px] border-[2px] border-zinc-700 cursor-grab">
+                  {cardFaces.back}
+                </div>
+              </Tilt>
+            </div>
+          </ReactCardFlip>
+        )}
         <motion.div animate={animationForm} initial={{ scale: 0 }}>
           <form onSubmit={validateCode}>
             <div className="flex flex-col w-full justify-center h-[69pn] items-center overflow-hidden">
@@ -225,6 +245,7 @@ const Card = () => {
                 type="text"
                 id="code"
                 name="code"
+                autoComplete="off"
                 className="w-40 mb-3 text-center text-2xl font-bold rounded-[5px] bg-slate-700 border-slate-800 placeholder-slate-200 text-white focus:ring-blue-500 focus:border-slate-100"
               />
               <button className="bg-slate-700 hover:bg-slate-800 text-white text-lg font-semibold py-2 px-4 rounded-[5px]">
