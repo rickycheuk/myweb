@@ -225,9 +225,9 @@ const Card = () => {
                 type="text"
                 id="code"
                 name="code"
-                className="w-40 mb-3 text-center text-2xl font-bold rounded-[2px] bg-slate-700 border-slate-800 placeholder-slate-200 text-white focus:ring-blue-500 focus:border-slate-100"
+                className="w-40 mb-3 text-center text-2xl font-bold rounded-[5px] bg-slate-700 border-slate-800 placeholder-slate-200 text-white focus:ring-blue-500 focus:border-slate-100"
               />
-              <button className="bg-slate-700 hover:bg-slate-800 text-white text-lg font-semibold py-2 px-4 rounded">
+              <button className="bg-slate-700 hover:bg-slate-800 text-white text-lg font-semibold py-2 px-4 rounded-[5px]">
                 Submit
               </button>
             </div>
