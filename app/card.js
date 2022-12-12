@@ -262,7 +262,7 @@ const Card = () => {
           </form>
         </motion.div>
 
-        <div className="p-10"></div>
+        <div className="p-5"></div>
       </motion.div>
     </div>
   );
