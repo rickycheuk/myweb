@@ -14,6 +14,8 @@ const Card = () => {
     { value: "#81003E" },
     { value: "#003B80" },
   ];
+  const options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const selectors = ["element0", "element1", "element2", "element3"];
 
   const [initScale, setScale] = useState(1);
   const [isFlipped, setFlip] = useState(true);
@@ -40,48 +42,6 @@ const Card = () => {
       },
     });
     await flipCard();
-    // await animationPic.start({
-    //   scale: 0,
-    //   transition: {
-    //     type: "spring",
-    //     duration: 1,
-    //   },
-    // });
-    // await animationPic.start({
-    //   scale: 1,
-    //   transition: {
-    //     type: "spring",
-    //     duration: animationDuration,
-    //   },
-    // });
-    // await animationTitle.start({
-    //   scale: 1,
-    //   transition: {
-    //     type: "spring",
-    //     duration: animationDuration,
-    //   },
-    // });
-    // await animationSub.start({
-    //   scale: 1,
-    //   transition: {
-    //     type: "spring",
-    //     duration: animationDuration,
-    //   },
-    // });
-    // await animationLink.start({
-    //   scale: 1,
-    //   transition: {
-    //     type: "spring",
-    //     duration: animationDuration,
-    //   },
-    // });
-    // await animationColor.start({
-    //   scale: 1,
-    //   transition: {
-    //     type: "spring",
-    //     duration: animationDuration,
-    //   },
-    // });
     await animationForm.start({
       scale: 0,
       transition: {
@@ -182,12 +142,15 @@ const Card = () => {
   const validateCode = async (event) => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
-    if (event.target.code.value == "0524") {
+    const code = selectors
+      .map((selector) => event.target.querySelector("#" + selector).value)
+      .join("");
+    if (code == "0524") {
       alert("BRRRAVO!!! You have exceeded my expectations :)");
-    } else if (event.target.code.value == "") {
+    } else if (code == "") {
       alert("Input is empty");
     } else {
-      alert(`${event.target.code.value} is not the right code`);
+      alert(`${code} is not the right code`);
     }
   };
 
@@ -248,13 +211,30 @@ const Card = () => {
               >
                 Find the hidden code on the card
               </label>
-              <input
-                type="text"
+              {/* <input
+                type="number"
                 id="code"
                 name="code"
                 autoComplete="off"
-                className="w-40 mb-3 text-center text-2xl font-bold rounded-[5px] bg-slate-700 border-slate-800 placeholder-slate-200 text-white focus:ring-blue-500 focus:border-slate-100"
-              />
+                maxlength="4"
+                placeholder="4 digit code"
+                className="appearance-none w-40 mb-3 text-center text-2xl font-bold rounded-[5px] bg-slate-700 border-slate-800 placeholder-slate-200 text-white focus:ring-blue-500 focus:border-slate-100 placeholder:text-slate-400 placeholder:font-semibold placeholder:text-lg"
+              /> */}
+              <div className="flex justify-content-between align-items-center gap-x-[10px]">
+                {selectors.map((selector) => (
+                  <select
+                    key={selector}
+                    id={selector}
+                    className="appearance-none form-select w-8 text-center mb-3 text-2xl font-bold rounded-[5px] bg-slate-700 border-slate-800 placeholder-slate-200 text-white focus:ring-blue-500 focus:border-slate-100"
+                  >
+                    {options.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                ))}
+              </div>
               <button className="bg-slate-700 hover:bg-slate-800 text-white text-lg font-semibold py-2 px-4 rounded-[5px]">
                 Submit
               </button>
